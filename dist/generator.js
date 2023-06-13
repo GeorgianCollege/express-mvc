@@ -40,9 +40,9 @@ function Scaffold(sourceFolder, destinationFolder) {
         }
     });
 }
-function generate(projectFolder) {
+function generate(projectFolder, useTypescript) {
     console.log("beginning to generate files from the template folder");
-    const templateDir = path.join(__dirname, '../templates');
+    const templateDir = path.join(__dirname, (useTypescript) ? '../templates/TypeScript/' : '../templates/JavaScript/');
     if (projectFolder != "") {
         fs.mkdirSync(projectFolder);
     }

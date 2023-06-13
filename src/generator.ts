@@ -21,10 +21,11 @@ function Scaffold(sourceFolder: string, destinationFolder: string): void
   });
 }
 
-export function generate(projectFolder: string) 
+export function generate(projectFolder: string, useTypescript: boolean) 
 {
+  
   console.log("beginning to generate files from the template folder");
-  const templateDir = path.join(__dirname, '../templates');
+  const templateDir = path.join(__dirname, (useTypescript) ? '../templates/TypeScript/' : '../templates/JavaScript/');
 
   // Create project directory
   if(projectFolder != "")
