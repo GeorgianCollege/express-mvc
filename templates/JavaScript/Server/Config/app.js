@@ -1,12 +1,12 @@
 // required node modules
-import createError from 'http-errors';
-import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 // Routing modules
-import indexRouter from '../Routes';
+const indexRouter = require('../Routes');
 
 const app = express();
 
@@ -42,4 +42,4 @@ app.use(function(err, req, res, next)
   res.render('error', {title: `Error: ${err.status}`, page: 'error'});
 });
 
-export default app
+module.exports = app;

@@ -1,9 +1,11 @@
 /* Example User Model */
 
-export default class UserModel 
+module.exports = class UserModel 
 {
     // Model implementation
     username = "";
     password = "";
 }
+
+
   

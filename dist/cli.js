@@ -5,7 +5,7 @@ const commander_1 = require("commander");
 const generator_1 = require("./generator");
 const program = new commander_1.Command();
 program
-    .version('1.0.10')
+    .version('1.0.11')
     .description('Generate an MVC project using Node and Express')
     .option('--tsc', 'Generate with TypeScript')
     .option('-h, --help', 'Display help')

@@ -4,10 +4,10 @@
  * Module dependencies.
  */
 
-import app from './Server/Config/app';
-import debug from 'debug';
+const app = require('./Server/Config/app');
+const debug = require('debug');
 debug('test-package:server');
-import http from 'http';
+const http = require('http');
 
 
 /**
