@@ -1,8 +1,12 @@
-import { Router } from 'express';
-import { HomeController } from '../controllers/HomeController';
+import express from 'express';
+const router = express.Router();
 
-const router = Router();
+import { DisplayHome } from '../controllers/HomeController';
 
-router.get('/', HomeController.index);
+
+router.get('/', (req, res, next)=>
+{
+    DisplayHome(req, res, next);
+});
 
 export default router;

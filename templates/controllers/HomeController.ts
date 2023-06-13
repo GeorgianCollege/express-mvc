@@ -1,9 +1,12 @@
+import { Request, Response, NextFunction } from 'express';
+
 import User from '../models/UserModel';
 
-export class HomeController {
-    static index(req: any, res: any) {
-      let user = new User();
-      res.render('home');
-    }
-  }
+export function DisplayHome(req:Request, res:Response, next:NextFunction):void
+{
+  let user = new User();
+  user.username = 'admin';
+  console.log(`username: ${user.username}`);
+  res.render('index', {title: 'Home', page: 'home'});
+}
   
