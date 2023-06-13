@@ -1,10 +1,24 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
-function generateFile(templatePath: string, outputPath: string) 
+// Recursive Function that copies files and folders from sourceFolder to destinationFolder
+function Scaffold(sourceFolder: string, destinationFolder: string): void
 {
-  const template = fs.readFileSync(templatePath, 'utf-8');
-  fs.writeFileSync(outputPath, template);
+  fs.readdirSync(sourceFolder).forEach((item) => 
+  {
+    const sourcePath = path.join(sourceFolder, item);
+    const destinationPath = path.join(destinationFolder, item);
+    const stats = fs.statSync(sourcePath);
+
+    if (stats.isFile()) 
+    {
+      fs.copyFileSync(sourcePath, destinationPath);
+    } else if (stats.isDirectory()) 
+    {
+      fs.mkdirSync(destinationPath);
+      Scaffold(sourcePath, destinationPath);
+    }
+  });
 }
 
 export function generate(projectFolder: string) 
@@ -23,30 +37,7 @@ export function generate(projectFolder: string)
   }
   
   // Generate files from templates
-  generateFile(path.join(templateDir, 'package.json'), path.join(projectFolder, 'package.json'));
-  generateFile(path.join(templateDir, 'tsconfig.json'), path.join(projectFolder, 'tsconfig.json'));
-
-  // Generate MVC structure
-  const configFolder = path.join(projectFolder, 'config');
-  const controllersFolder = path.join(projectFolder, 'controllers');
-  const modelsFolder = path.join(projectFolder, 'models');
-  const viewsFolder = path.join(projectFolder, 'views');
-  const routesFolder = path.join(projectFolder, 'routes');
-
-  fs.mkdirSync(configFolder);
-  fs.mkdirSync(controllersFolder);
-  fs.mkdirSync(modelsFolder);
-  fs.mkdirSync(viewsFolder);
-  fs.mkdirSync(routesFolder);
-
-  // Generate example files
-  generateFile(path.join(templateDir, 'config', 'app.ts'), path.join(configFolder, 'app.ts'));
-  generateFile(path.join(templateDir, 'controllers', 'HomeController.ts'), path.join(controllersFolder, 'HomeController.ts'));
-  generateFile(path.join(templateDir, 'models', 'UserModel.ts'), path.join(modelsFolder, 'UserModel.ts'));
-  generateFile(path.join(templateDir, 'views', 'home.ejs'), path.join(viewsFolder, 'home.ejs'));
-  generateFile(path.join(templateDir, 'routes', 'home.ts'), path.join(routesFolder, 'home.ts'));
-
-  generateFile(path.join(templateDir, 'server.ts'), path.join(projectFolder, 'server.ts'));
+  Scaffold(templateDir, projectFolder);
   
   console.log('Project generated successfully!');
 }
