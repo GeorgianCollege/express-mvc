@@ -1,6 +1,6 @@
 {
   "name": "@georgiancollege/my-test-package",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "dist/index.js",
   "bin": {
     "test-package": "dist/cli.js"
