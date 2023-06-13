@@ -33,6 +33,7 @@ function generateFile(templatePath, outputPath, data) {
     fs.writeFileSync(outputPath, rendered);
 }
 function generateProjectStructure(projectName, projectDirectory) {
+    console.log("beginning to generate files from the template folder");
     const templateDir = path.join(__dirname, '../templates');
     fs.mkdirSync(projectDirectory);
     generateFile(path.join(templateDir, 'package.json'), path.join(projectDirectory, 'package.json'), {

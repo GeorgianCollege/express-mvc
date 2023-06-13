@@ -1,4 +1,6 @@
-export class UserModel {
+export default class UserModel {
     // Model implementation
+    username = "";
+    password = "";
   }
   

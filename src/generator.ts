@@ -8,7 +8,9 @@ function generateFile(templatePath: string, outputPath: string, data: Record<str
   fs.writeFileSync(outputPath, rendered);
 }
 
-function generateProjectStructure(projectName: string, projectDirectory: string) {
+function generateProjectStructure(projectName: string, projectDirectory: string) 
+{
+  console.log("beginning to generate files from the template folder");
   const templateDir = path.join(__dirname, '../templates');
 
   // Create project directory
@@ -44,7 +46,8 @@ function generateProjectStructure(projectName: string, projectDirectory: string)
   generateFile(path.join(templateDir, 'routes', 'home.ts'), path.join(routesDirectory, 'home.ts'), {});
 }
 
-export function generate(projectName: string, projectDirectory: string) {
+export function generate(projectName: string, projectDirectory: string) 
+{
   generateProjectStructure(projectName, projectDirectory);
   console.log('Project generated successfully!');
 }
