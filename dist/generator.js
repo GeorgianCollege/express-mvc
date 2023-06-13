@@ -26,11 +26,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generate = void 0;
 const fs = __importStar(require("fs-extra"));
 const path = __importStar(require("path"));
-const ejs = __importStar(require("ejs"));
-function generateFile(templatePath, outputPath, data) {
+function generateFile(templatePath, outputPath) {
     const template = fs.readFileSync(templatePath, 'utf-8');
-    const rendered = ejs.render(template, data);
-    fs.writeFileSync(outputPath, rendered);
+    fs.writeFileSync(outputPath, template);
 }
 function generate(projectFolder) {
     console.log("beginning to generate files from the template folder");
@@ -41,8 +39,8 @@ function generate(projectFolder) {
     else {
         projectFolder = './';
     }
-    generateFile(path.join(templateDir, 'package.json'), path.join(projectFolder, 'package.json'), {});
-    generateFile(path.join(templateDir, 'tsconfig.json'), path.join(projectFolder, 'tsconfig.json'), {});
+    generateFile(path.join(templateDir, 'package.json'), path.join(projectFolder, 'package.json'));
+    generateFile(path.join(templateDir, 'tsconfig.json'), path.join(projectFolder, 'tsconfig.json'));
     const configFolder = path.join(projectFolder, 'config');
     const controllersFolder = path.join(projectFolder, 'controllers');
     const modelsFolder = path.join(projectFolder, 'models');
@@ -53,12 +51,12 @@ function generate(projectFolder) {
     fs.mkdirSync(modelsFolder);
     fs.mkdirSync(viewsFolder);
     fs.mkdirSync(routesFolder);
-    generateFile(path.join(templateDir, 'config', 'app.ts'), path.join(configFolder, 'app.ts'), {});
-    generateFile(path.join(templateDir, 'controllers', 'HomeController.ts'), path.join(controllersFolder, 'HomeController.ts'), {});
-    generateFile(path.join(templateDir, 'models', 'UserModel.ts'), path.join(modelsFolder, 'UserModel.ts'), {});
-    generateFile(path.join(templateDir, 'views', 'home.ejs'), path.join(viewsFolder, 'home.ejs'), {});
-    generateFile(path.join(templateDir, 'routes', 'home.ts'), path.join(routesFolder, 'home.ts'), {});
-    generateFile(path.join(templateDir, 'server.ts'), path.join(projectFolder, 'server.ts'), {});
+    generateFile(path.join(templateDir, 'config', 'app.ts'), path.join(configFolder, 'app.ts'));
+    generateFile(path.join(templateDir, 'controllers', 'HomeController.ts'), path.join(controllersFolder, 'HomeController.ts'));
+    generateFile(path.join(templateDir, 'models', 'UserModel.ts'), path.join(modelsFolder, 'UserModel.ts'));
+    generateFile(path.join(templateDir, 'views', 'home.ejs'), path.join(viewsFolder, 'home.ejs'));
+    generateFile(path.join(templateDir, 'routes', 'home.ts'), path.join(routesFolder, 'home.ts'));
+    generateFile(path.join(templateDir, 'server.ts'), path.join(projectFolder, 'server.ts'));
     console.log('Project generated successfully!');
 }
 exports.generate = generate;
