@@ -6,7 +6,7 @@ import { generate } from './generator';
 const program = new Command();
 
 program
-  .version('1.0.2')
+  .version('1.0.3')
   .description('Generate an MVC project using Node and Express')
   .option('--tsc', 'Generate with TypeScript')
   .option('-h, --help', 'Display help')
