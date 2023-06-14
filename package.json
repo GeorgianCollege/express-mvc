@@ -47,5 +47,6 @@
     "@types/jquery": "^3.5.16",
     "@types/morgan": "^1.9.4",
     "@types/node": "^20.3.1"
-  }
+  },
+  "repository": "https://github.com/GeorgianCollege/express-mvc.git"
 }
