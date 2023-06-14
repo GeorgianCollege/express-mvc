@@ -9,6 +9,8 @@ It was designed for students at **Georgian College** (https://www.georgiancolleg
 - NodeJS (https://nodejs.org/en)
 - Express (https://expressjs.com/)
 - TypeScript (https://www.typescriptlang.org/)
+- Bootstrap (https://getbootstrap.com/)
+- Font Awesome (https://fontawesome.com/)
 
 <br>
 
