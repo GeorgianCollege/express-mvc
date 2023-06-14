@@ -1,3 +1,12 @@
 export { generate } from './generator';
 
-// You can add additional exported functions or classes if needed
+/* test bed
+import { generate } from './generator';
+import { Argument } from './argument'
+
+let argument = new Argument();
+argument.tsc = true;
+argument.api = true;
+
+generate('./test', argument);
+*/

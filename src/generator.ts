@@ -1,5 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
+import { Argument } from './argument';
 
 // Recursive Function that copies files and folders from sourceFolder to destinationFolder
 function Scaffold(sourceFolder: string, destinationFolder: string): void
@@ -21,11 +22,26 @@ function Scaffold(sourceFolder: string, destinationFolder: string): void
   });
 }
 
-export function generate(projectFolder: string, useTypescript: boolean) 
+export function generate(projectFolder: string, argument: Argument) 
 {
-  
   console.log("beginning to generate files from the template folder");
-  const templateDir = path.join(__dirname, (useTypescript) ? '../templates/TypeScript/' : '../templates/JavaScript/');
+
+  let sourceFolder: string = "";
+
+  if(!argument.api && argument.tsc)
+  {
+    sourceFolder = "../templates/mvctsc/";
+  }
+  else if(argument.api && argument.tsc)
+  {
+    sourceFolder = "../templates/apitsc/";
+  }
+  else
+  {
+    sourceFolder = "../templates/mvcjs/";
+  }
+
+  const templateDir = path.join(__dirname, sourceFolder);
 
   // Create project directory
   if(projectFolder != "")
@@ -43,9 +59,15 @@ export function generate(projectFolder: string, useTypescript: boolean)
   console.log("Project generated successfully!\n");
   console.log("Don't forget to run: ")
   console.log("%c - npm install", "font-weight: bold");
-  if(useTypescript)
+
+  if(argument.tsc)
   {
     console.log("%c - npm run build", "font-weight: bold");
+  }
+
+  if(argument.api)
+  {
+    console.log("%c - import the sample data", "font-weight: bold");
   }
 
 }
