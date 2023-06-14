@@ -40,5 +40,12 @@ export function generate(projectFolder: string, useTypescript: boolean)
   // Generate files from templates
   Scaffold(templateDir, projectFolder);
   
-  console.log('Project generated successfully!');
+  console.log("Project generated successfully!\n");
+  console.log("Don't forget to run: ")
+  console.log("%c - npm install", "font-weight: bold");
+  if(useTypescript)
+  {
+    console.log("%c - npm run build", "font-weight: bold");
+  }
+
 }
