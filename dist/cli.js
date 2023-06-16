@@ -6,7 +6,7 @@ const generator_1 = require("./generator");
 const argument_1 = require("./argument");
 const program = new commander_1.Command();
 program
-    .version('1.0.5')
+    .version('1.0.6')
     .description('Generate an MVC project using Node and Express')
     .option('--api', 'No Views folder, creates an Express API')
     .option('--tsc', 'Generate with TypeScript')

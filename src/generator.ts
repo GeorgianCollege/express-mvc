@@ -36,6 +36,10 @@ export function generate(projectFolder: string, argument: Argument)
   {
     sourceFolder = "../templates/apitsc/";
   }
+  else if(argument.api && !argument.tsc)
+  {
+    sourceFolder = "../templates/apijs/";
+  }
   else
   {
     sourceFolder = "../templates/mvcjs/";

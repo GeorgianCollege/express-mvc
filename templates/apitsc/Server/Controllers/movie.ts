@@ -2,7 +2,12 @@ import { Request, Response, NextFunction } from 'express';
 
 import Movie from '../Models/movie';
 
-// Utility Function
+/**
+ * This function sanitizes the array of strings
+ *
+ * @param {string[]} unsanitizedArray
+ * @returns {string[]}
+ */
 function SanitizeArray(unsanitizedArray: string[]): string[]
 {
     let sanitizedArray: string[] = Array<string>();
@@ -14,6 +19,15 @@ function SanitizeArray(unsanitizedArray: string[]): string[]
 }
 
 /* API Functions */
+
+/**
+ * This function displays the Movie List
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export function DisplayMovieList(req: Request, res: Response, next: NextFunction): void
 {
     
@@ -28,6 +42,14 @@ export function DisplayMovieList(req: Request, res: Response, next: NextFunction
     });
 }
 
+/**
+ * This function displays a single movie by the provided ID
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export function DisplayMovieByID(req: Request, res: Response, next: NextFunction): void
 {
     let id = req.params.id;
@@ -42,14 +64,22 @@ export function DisplayMovieByID(req: Request, res: Response, next: NextFunction
     });
 }
 
+/**
+ * This function adds a to the database
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export function AddMovie(req: Request, res: Response, next: NextFunction): void
 {
-
     let genres = SanitizeArray((req.body.genres as string).split(","));
     let directors = SanitizeArray((req.body.directors as string).split(","));
     let writers = SanitizeArray((req.body.writers as string).split(","));
     let actors = SanitizeArray((req.body.actors as string).split(","));
 
+    // Instantiate a new Movie
     let movie = new Movie({
        movieID: req.body.movieID,
        title: req.body.title,
@@ -65,6 +95,7 @@ export function AddMovie(req: Request, res: Response, next: NextFunction): void
        criticsRating: req.body.criticsRating
     });
 
+    // Create a new movie and pass it to the db
     Movie.create(movie)
     .then(function()
     {
@@ -76,6 +107,14 @@ export function AddMovie(req: Request, res: Response, next: NextFunction): void
     });
 }
 
+/**
+ * This function removes a movie from the database by the provided ID
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export function UpdateMovie(req: Request, res: Response, next: NextFunction): void
 {
     let id = req.params.id;
@@ -100,6 +139,7 @@ export function UpdateMovie(req: Request, res: Response, next: NextFunction): vo
        criticsRating: req.body.criticsRating
     });
 
+    // Update a movie and pass it to the db
     Movie.updateOne({_id: id}, movieToUpdate)
     .then(function()
     {
@@ -111,6 +151,14 @@ export function UpdateMovie(req: Request, res: Response, next: NextFunction): vo
     });
 }
 
+/**
+ * This function removes a movie from the database by the provided ID
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export function DeleteMovie(req: Request, res: Response, next: NextFunction): void
 {
     let id = req.params.id;
