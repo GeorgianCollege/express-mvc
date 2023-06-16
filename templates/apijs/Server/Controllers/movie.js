@@ -1,7 +1,12 @@
 // import the Movie Model
 const Movie = require('../Models/movie');
 
-// Helper function for sanitizing arrays
+/**
+ * This function sanitizes the array of strings
+ *
+ * @param {string[]} unsanitizedArray
+ * @returns {string[]}
+ */
 function SanitizeArray(unsanitizedArray)
 {
     let sanitizedArray = [];
@@ -14,7 +19,14 @@ function SanitizeArray(unsanitizedArray)
 
 /* API Functions */
 
-// Display the Movie List
+/**
+ * This function displays the Movie List
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 function DisplayMovieList(req, res, next)
 {
     // Find all Movies in the Movie collection
@@ -29,10 +41,20 @@ function DisplayMovieList(req, res, next)
     });
 }
 
-// Display a single Movie by ID
+/**
+ * This function displays a single movie by the provided ID
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 function DisplayMovieByID(req, res, next)
 {
+    // Get the id from the url
     let id = req.params.id;
+
+    // Find the Movie by id
     Movie.findById({_id: id})
     .then(function(data)
     {
@@ -44,15 +66,23 @@ function DisplayMovieByID(req, res, next)
     });
 }
 
-// Add a new Movie to the database
+/**
+ * This function adds a new movie to the database
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 function AddMovie(req, res, next)
 {
-
+    // Sanitize the array
     let genres = SanitizeArray((req.body.genres).split(","));
     let directors = SanitizeArray((req.body.directors).split(","));
     let writers = SanitizeArray((req.body.writers).split(","));
     let actors = SanitizeArray((req.body.actors).split(","));
 
+     // Instantiate a new Movie
     let movie = new Movie({
        movieID: req.body.movieID,
        title: req.body.title,
@@ -68,6 +98,7 @@ function AddMovie(req, res, next)
        criticsRating: req.body.criticsRating
     });
 
+    // Create a new movie and pass it to the db
     Movie.create(movie)
     .then(function()
     {
@@ -79,7 +110,14 @@ function AddMovie(req, res, next)
     });
 }
 
-// Update an existing Movie in the database
+/**
+ * This function removes a movie from the database by the provided ID
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 function UpdateMovie(req, res, next)
 {
     // Get the id from the url
@@ -120,7 +158,14 @@ function UpdateMovie(req, res, next)
     });
 }
 
-// Delete an existing Movie in the database
+/**
+ * This function removes a movie from the database by the provided ID
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 function DeleteMovie(req, res, next)
 {
     // Get the id from the url

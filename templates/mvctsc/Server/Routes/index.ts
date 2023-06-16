@@ -1,6 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
+// import functions from the index controller
 import { DisplayHome } from '../Controllers/index';
 
 /* GET Default Route */

@@ -1,5 +1,6 @@
 import { Collection, Schema,  model } from 'mongoose';
 
+// Movie Interface - defines the structure of a movie
 interface IMovie
 {
     movieID: string,
@@ -16,6 +17,7 @@ interface IMovie
     criticsRating: number
 }
 
+// Movie Schema - defines the structure of a movie using the Movie Interface
 let movieSchema = new Schema<IMovie>
 ({
     movieID: String,

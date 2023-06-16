@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+// import the index controller
 const IndexController = require('../Controllers/index');
 
 /* GET Default Route */

@@ -30,7 +30,7 @@ function SanitizeArray(unsanitizedArray: string[]): string[]
  */
 export function DisplayMovieList(req: Request, res: Response, next: NextFunction): void
 {
-    
+    // Find all Movies in the Movie collection
     Movie.find({})
     .then(function(data)
     {
@@ -52,7 +52,10 @@ export function DisplayMovieList(req: Request, res: Response, next: NextFunction
  */
 export function DisplayMovieByID(req: Request, res: Response, next: NextFunction): void
 {
+    // Get the id from the url
     let id = req.params.id;
+
+    // Find the Movie by id
     Movie.findById({_id: id})
     .then(function(data)
     {
@@ -65,7 +68,7 @@ export function DisplayMovieByID(req: Request, res: Response, next: NextFunction
 }
 
 /**
- * This function adds a to the database
+ * This function adds a new movie to the database
  *
  * @export
  * @param {Request} req
@@ -74,6 +77,7 @@ export function DisplayMovieByID(req: Request, res: Response, next: NextFunction
  */
 export function AddMovie(req: Request, res: Response, next: NextFunction): void
 {
+    // Sanitize the array
     let genres = SanitizeArray((req.body.genres as string).split(","));
     let directors = SanitizeArray((req.body.directors as string).split(","));
     let writers = SanitizeArray((req.body.writers as string).split(","));
@@ -117,12 +121,16 @@ export function AddMovie(req: Request, res: Response, next: NextFunction): void
  */
 export function UpdateMovie(req: Request, res: Response, next: NextFunction): void
 {
+    // Get the id from the url  
     let id = req.params.id;
+
+    // Sanitize the array
     let genres = SanitizeArray((req.body.genres as string).split(","));
     let directors = SanitizeArray((req.body.directors as string).split(","));
     let writers = SanitizeArray((req.body.writers as string).split(","));
     let actors = SanitizeArray((req.body.actors as string).split(","));
 
+    // Instantiate a new Movie Object
     let movieToUpdate = new Movie({
        _id: id,
        movieID: req.body.movieID,
@@ -139,7 +147,7 @@ export function UpdateMovie(req: Request, res: Response, next: NextFunction): vo
        criticsRating: req.body.criticsRating
     });
 
-    // Update a movie and pass it to the db
+    // Find the Movie by id and then update
     Movie.updateOne({_id: id}, movieToUpdate)
     .then(function()
     {
@@ -161,8 +169,10 @@ export function UpdateMovie(req: Request, res: Response, next: NextFunction): vo
  */
 export function DeleteMovie(req: Request, res: Response, next: NextFunction): void
 {
+    // Get the id from the url
     let id = req.params.id;
 
+    // Find the Movie by id and then delete
     Movie.deleteOne({_id: id})
     .then(function()
     {
