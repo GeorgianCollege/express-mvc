@@ -1,10 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const generator_1 = require("./generator");
-const argument_1 = require("./argument");
-let argument = new argument_1.Argument();
-argument.auth = true;
-argument.tsc = false;
-argument.api = true;
-(0, generator_1.generate)('./test', argument);
+exports.generate = void 0;
+var generator_1 = require("./generator");
+Object.defineProperty(exports, "generate", { enumerable: true, get: function () { return generator_1.generate; } });
 //# sourceMappingURL=index.js.map

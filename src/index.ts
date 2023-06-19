@@ -1,6 +1,6 @@
-//export { generate } from './generator';
+export { generate } from './generator';
 
-
+/*
 import { generate } from './generator';
 import { Argument } from './argument'
 
@@ -10,3 +10,4 @@ argument.tsc = false;
 argument.api = true;
 
 generate('./test', argument);
+*/
