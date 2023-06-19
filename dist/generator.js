@@ -54,7 +54,11 @@ function generate(projectFolder, argument) {
     }
     else if (argument.api && argument.tsc && argument.auth) {
         sourceFolder = "../templates/apiauthtsc/";
-        console.log("scaffolding an Express API with TypeScript -- with Authentication");
+        console.log("scaffolding an Express API with TypeScript and Authentication");
+    }
+    else if (argument.api && !argument.tsc && argument.auth) {
+        sourceFolder = "../templates/apiauthjs/";
+        console.log("scaffolding an Express API with JavaScript and Authentication");
     }
     else if (argument.api && !argument.tsc && !argument.auth) {
         sourceFolder = "../templates/apijs/";

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema; // alias for mongoose Schema
+let Schema = mongoose.Schema; // alias for mongoose Schema
 
-// Movie Schema - defines the structure of a movie
+// Movie Schema - defines the structure of a movie using the Movie Interface
 let movieSchema = new Schema
 ({
     movieID: String,
