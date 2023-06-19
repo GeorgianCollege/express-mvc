@@ -12,6 +12,8 @@ It was designed for students at **Georgian College** (https://www.georgiancolleg
 - Bootstrap (https://getbootstrap.com/)
 - Font Awesome (https://fontawesome.com/)
 - Mongoose (https://mongoosejs.com/)
+- Passport (https://www.passportjs.org/)
+- JWT (https://jwt.io/)
 
 <br>
 
@@ -35,9 +37,10 @@ npm i @georgiancollege/express-mvc -g
 ### Current Installation Options:
 ---
 - ```--api - scaffold an Express api that does not include views```
+- ```--auth - adds authentication```
 - ```--tsc - provide TypeScript support```
 
-- the default is **JavaScript**
+- the default is a **JavaScript** MVC with no Authentication
 
 
 <br>
@@ -61,7 +64,7 @@ npm i @georgiancollege/express-mvc -g
 ## MVC Site Structure (JavaScript version):
 ---
 ```
-express-mvc
+express-mvc-js
 ├── Client
 │   ├── Assets
 │   │   └── images
@@ -132,12 +135,13 @@ express-mvc-tsc
 ## API Site Structure (JavaScript version):
 ---
 ```
-express-mvc-api
+express-mvc-api-js
 ├── Server
 │   ├── Config
-│   │   └── app.js
+│   │   ├── app.js
+│   │   └── db.ts
 │   ├── Controllers
-│   │   └── index.js
+│   │   └── movie.js
 │   ├── Models
 │   │   └── movie.js
 │   └── Routes
@@ -147,26 +151,21 @@ express-mvc-api
 ├── package.json
 └── server.js
 ```
----
-### Notes:
-- The **JavaScript** version uses the CommonJS module pattern (i.e., **```require```** statements)
-- We've include an example **Movie Model** that assumes you will be using **```mongoose```** to connect to **MongoDB**
-
 
 <br>
 
-
-## MVC Site Structure (TypeScript version):
+## API Site Structure (TypeScript version):
 ---
 ```
 express-mvc-api-tsc
 ├── Server
 │   ├── Config
-│   │   └── app.ts
+│   │   ├── app.ts
+│   │   └── db.ts
 │   ├── Controllers
-│   │   └── index.ts
-│   ├── Models
 │   │   └── movie.ts
+│   ├── Models
+│   │   └── user.ts
 │   └── Routes
 │       └── index.ts
 ├── .gitignore
@@ -177,5 +176,63 @@ express-mvc-api-tsc
 ```
 ---
 ### Notes:
-- The **TypeScript** version uses the **esm module pattern** (i.e., **```import```** and **```export```** statements)
 - We've include an example **Movie Model** that assumes you will be using **```mongoose```** to connect to **MongoDB**
+
+<br>
+
+## API Site Structure (JavaScript version) includes JWT Authentication:
+---
+```
+express-mvc-api-auth-js
+├── Server
+│   ├── Config
+│   │   ├── app.js
+│   │   └── db.ts
+│   ├── Controllers
+│   │   ├── auth.js
+│   │   └── movie.js
+│   ├── Models
+│   │   ├── movie.js
+│   │   └── user.js
+│   ├── Routes
+│   │   ├── auth.js
+│   │   └── index.js
+│   └── Util
+│       └── index.js
+├── .gitignore
+├── movies.json
+├── package.json
+└── server.js
+```
+
+<br>
+
+## API Site Structure (TypeScript version) includes JWT Authentication:
+---
+```
+express-mvc-api-auth-tsc
+├── Server
+│   ├── Config
+│   │   ├── app.ts
+│   │   └── db.ts
+│   ├── Controllers
+│   │   ├── auth.ts
+│   │   └── movie.ts
+│   ├── Models
+│   │   ├── movie.ts
+│   │   └── user.ts
+│   ├── Routes
+│   │   ├── auth.ts
+│   │   └── index.ts
+│   └── Util
+│       └── index.ts
+├── .gitignore
+├── movies.json
+├── package.json
+├── server.ts
+└── tsconfig.json
+```
+---
+### Notes:
+
+- Uses JWT Authentication
