@@ -6,7 +6,7 @@
 
 import app from './Server/Config/app';
 import debug from 'debug';
-debug('test-package:server');
+debug('mvctsc:server');
 import http from 'http';
 import { HttpError } from 'http-errors';
 

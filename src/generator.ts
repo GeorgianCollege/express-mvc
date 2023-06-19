@@ -25,24 +25,33 @@ function Scaffold(sourceFolder: string, destinationFolder: string): void
 export function generate(projectFolder: string, argument: Argument) 
 {
   console.log("beginning to generate files from the template folder");
-
+  console.log("...");
   let sourceFolder: string = "";
 
-  if(!argument.api && argument.tsc)
+  if(!argument.api && argument.tsc && !argument.auth)
   {
     sourceFolder = "../templates/mvctsc/";
+    console.log("scaffolding a simple MVC project with TypeScript");
   }
-  else if(argument.api && argument.tsc)
+  else if(argument.api && argument.tsc && !argument.auth)
   {
     sourceFolder = "../templates/apitsc/";
+    console.log("scaffolding an Express API with TypeScript -- no Authentication");
   }
-  else if(argument.api && !argument.tsc)
+  else if(argument.api && argument.tsc && argument.auth)
+  {
+    sourceFolder = "../templates/apiauthtsc/";
+    console.log("scaffolding an Express API with TypeScript -- with Authentication");
+  }
+  else if(argument.api && !argument.tsc && !argument.auth)
   {
     sourceFolder = "../templates/apijs/";
+    console.log("scaffolding an Express API with JavaScript -- no Authentication");
   }
   else
   {
     sourceFolder = "../templates/mvcjs/";
+    console.log("scaffolding a simple MVC project with JavaScript");
   }
 
   const templateDir = path.join(__dirname, sourceFolder);
@@ -60,7 +69,8 @@ export function generate(projectFolder: string, argument: Argument)
   // Generate files from templates
   Scaffold(templateDir, projectFolder);
   
-  console.log("Project generated successfully!\n");
+  console.log("Project generated successfully!");
+  console.log("...");
   console.log("Don't forget to run: ")
   console.log("%c - npm install", "font-weight: bold");
 

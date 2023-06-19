@@ -5,6 +5,7 @@ class Argument {
     constructor() {
         this.api = false;
         this.tsc = false;
+        this.auth = false;
     }
 }
 exports.Argument = Argument;

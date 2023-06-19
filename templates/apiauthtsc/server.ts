@@ -4,11 +4,12 @@
  * Module dependencies.
  */
 
-const app = require('./Server/Config/app');
-const debug = require('debug');
-debug('apijs:server');
-const http = require('http');
-
+import app from './Server/Config/app';
+import debug from 'debug';
+debug('apiauthtsc:server');
+import http from 'http';
+import { AddressInfo } from 'net';
+import { HttpError } from 'http-errors';
 
 /**
  * Get port from environment and store in Express.
@@ -35,7 +36,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val)
+function normalizePort(val:string) : string | number | false 
 {
   let port = parseInt(val, 10);
 
@@ -57,7 +58,7 @@ function normalizePort(val)
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) 
+function onError(error: HttpError) : void
 {
   if (error.syscall !== 'listen') 
   {
@@ -88,9 +89,9 @@ function onError(error)
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() 
+function onListening() : void
 {
-  let addr = server.address();
+  let addr = server.address() as AddressInfo;
   let bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;

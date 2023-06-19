@@ -7,9 +7,10 @@ import { Argument } from './argument';
 const program = new Command();
 
 program
-  .version('1.0.6')
+  .version('1.0.7')
   .description('Generate an MVC project using Node and Express')
   .option('--api', 'No Views folder, creates an Express API')
+  .option('--auth', 'Adds Authentication to the project')
   .option('--tsc', 'Generate with TypeScript')
   .option('-h, --help', 'Display help')
   .argument('[folder]', 'Project folder path')
