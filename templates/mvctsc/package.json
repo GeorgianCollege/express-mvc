@@ -4,6 +4,7 @@
   "main": "server.js",
   "author": "Your Name Goes Here",
   "scripts": {
+    "postinstall": "node createFiles.js",
     "build": "tsc",
     "start": "node server.js"
   },

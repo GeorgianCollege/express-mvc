@@ -2,6 +2,7 @@
   "name": "your-api-tsc",
   "version": "0.0.1",
   "scripts": {
+    "postinstall": "node createFiles.js",
     "build": "tsc",
     "start": "node server.js"
   },

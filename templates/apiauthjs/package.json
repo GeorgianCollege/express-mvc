@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "author": "Your Name Goes Here",
   "scripts": {
+    "postinstall": "node createFiles.js",
     "start": "node server.js"
   },
   "main": "server.js",
