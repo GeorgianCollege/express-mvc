@@ -85,6 +85,7 @@ express-mvc-js
 │   └── Views
 │       ├── error.ejs
 │       └── index.ejs
+├── .env
 ├── .gitignore
 ├── package.json
 └── server.js
@@ -121,6 +122,7 @@ express-mvc-tsc
 │   └── Views
 │       ├── error.ejs
 │       └── index.ejs
+├── .env
 ├── .gitignore
 ├── package.json
 ├── server.ts
@@ -146,6 +148,7 @@ express-mvc-api-js
 │   │   └── movie.js
 │   └── Routes
 │       └── index.js
+├── .env
 ├── .gitignore
 ├── movies.json
 ├── package.json
@@ -168,6 +171,7 @@ express-mvc-api-tsc
 │   │   └── user.ts
 │   └── Routes
 │       └── index.ts
+├── .env
 ├── .gitignore
 ├── movies.json
 ├── package.json
@@ -199,6 +203,7 @@ express-mvc-api-auth-js
 │   │   └── index.js
 │   └── Util
 │       └── index.js
+├── .env
 ├── .gitignore
 ├── movies.json
 ├── package.json
@@ -226,6 +231,7 @@ express-mvc-api-auth-tsc
 │   │   └── index.ts
 │   └── Util
 │       └── index.ts
+├── .env
 ├── .gitignore
 ├── movies.json
 ├── package.json
