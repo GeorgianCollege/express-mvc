@@ -7,7 +7,7 @@ import { Argument } from './argument';
 const program = new Command();
 
 program
-  .version('1.1.2')
+  .version('1.1.3')
   .description('Generate an MVC project using Node and Express')
   .option('--api', 'No Views folder, creates an Express API')
   .option('--auth', 'Adds Authentication to the project')
@@ -34,6 +34,7 @@ program
     argument.api = options.api;
     argument.tsc = options.tsc;
     argument.hbs = options.hbs;
+    argument.auth = options.auth;
     
     console.log((argument.tsc) ? "--with TypeScript" : "--no TypeScript");
     console.log(((argument.hbs) && (!argument.api)) ? "--with Handlebars" : "");
