@@ -53,10 +53,20 @@ export function generate(projectFolder: string, argument: Argument)
     sourceFolder = "../templates/apijs/";
     console.log("scaffolding an Express API with JavaScript -- no Authentication");
   }
+  else if(argument.hbs && !argument.tsc && !argument.api)
+  {
+    sourceFolder = "../templates/mvcjshbs/";
+    console.log("scaffolding a simple MVC project with JavaScript using Handlebars as the view engine");
+  }
+  else if(argument.hbs && argument.tsc && !argument.api)
+  {
+    sourceFolder = "../templates/mvctschbs/";
+    console.log("scaffolding a simple MVC project with TypeScript using Handlebars as the view engine");
+  }
   else
   {
     sourceFolder = "../templates/mvcjs/";
-    console.log("scaffolding a simple MVC project with JavaScript");
+    console.log("scaffolding a simple MVC project with JavaScript using EJS as the view engine");
   }
 
   const templateDir = path.join(__dirname, sourceFolder);

@@ -6,6 +6,7 @@ class Argument {
         this.api = false;
         this.tsc = false;
         this.auth = false;
+        this.hbs = false;
     }
 }
 exports.Argument = Argument;

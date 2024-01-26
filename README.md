@@ -39,9 +39,9 @@ npm i @georgiancollege/express-mvc -g
 - ```--api - scaffold an Express api that does not include views```
 - ```--auth - adds authentication```
 - ```--tsc - provide TypeScript support```
+- ```--hbs - uses handlebars view engine```
 
 - the default is a **JavaScript** MVC with no Authentication
-
 
 <br>
 <br>
@@ -94,9 +94,43 @@ express-mvc-js
 ### Notes:
 - The **JavaScript** version uses the CommonJS module pattern (i.e., **```require```** statements)
 
-
 <br>
 
+## MVC Site Structure (JavaScript version with handlebars):
+---
+```
+express-mvc-js-hbs
+├── Client
+│   ├── Assets
+│   │   └── images
+│   │       └── .gitkeep
+│   ├── Content
+│   │   └── app.css
+│   └── Scripts
+│       └── app.js
+├── Server
+│   ├── Config
+│   │   └── app.js
+│   ├── Controllers
+│   │   └── index.js
+│   ├── Models
+│   │   └── user.js
+│   ├── Routes
+│   │   └── index.js
+│   └── Views
+│       ├── error.hbs
+│       ├── index.hbs
+│       └── layout.hbs
+├── .env
+├── .gitignore
+├── package.json
+└── server.js
+```
+---
+### Notes:
+- The **JavaScript with handlebars** version uses the CommonJS module pattern (i.e., **```require```** statements)
+
+<br>
 
 ## MVC Site Structure (TypeScript version):
 ---
@@ -131,6 +165,43 @@ express-mvc-tsc
 ---
 ### Notes:
 - The **TypeScript** version uses the **esm module pattern** (i.e., **```import```** and **```export```** statements)
+
+<br>
+
+## MVC Site Structure (TypeScript version with handlebars):
+---
+```
+express-mvc-tsc-hbs
+├── Client
+│   ├── Assets
+│   │   └── images
+│   │       └── .gitkeep
+│   ├── Content
+│   │   └── app.css
+│   └── Scripts
+│       └── app.ts
+├── Server
+│   ├── Config
+│   │   └── app.ts
+│   ├── Controllers
+│   │   └── index.ts
+│   ├── Models
+│   │   └── user.ts
+│   ├── Routes
+│   │   └── index.ts
+│   └── Views
+│       ├── error.hbs
+│       ├── index.hbs
+│       └── layout.hbs
+├── .env
+├── .gitignore
+├── package.json
+├── server.ts
+└── tsconfig.json
+```
+---
+### Notes:
+- The **TypeScript with handlebars** version uses the **esm module pattern** (i.e., **```import```** and **```export```** statements)
 
 <br>
 
